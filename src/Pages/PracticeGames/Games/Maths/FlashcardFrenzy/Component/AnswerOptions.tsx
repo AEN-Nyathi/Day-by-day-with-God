@@ -29,12 +29,9 @@ const AnswerOptions: React.FC<SelectedAnswerProps> = ({
 	return (
 		<article className=" rounded-lg shadow-md p-4 mb-8">
 			<ul className="grid grid-cols-3 md:grid-cols-11 gap-4">
-				{AvelableAnswers.map((AvelableAnswer) => {
+				{AvelableAnswers.filter((answer) => answer >= 0).map((AvelableAnswer) => {
 					return (
-						<li
-							key={
-								(AvelableAnswer / Math.random()) * Math.random() + Math.random()
-							}>
+						<li key={Math.random() * 1000}>
 							<button
 								onClick={() => {
 									handleAnswerClick(

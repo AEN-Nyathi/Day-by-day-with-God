@@ -12,19 +12,38 @@ import GrenereteQuetions from './Fuction/GrenereteQuetions';
 import Grade1Clue from './Component/Clue/Grade1Clue';
 import Grade2Clue from './Component/Clue/Grade2Clue';
 import Grade3Clue from './Component/Clue/Grade3Clue';
+import Won from './Component/Won';
+interface Question {
+	sign: '-' | '+';
+	question: string;
+	answer: number;
+	AvelableAnswers: number[];
+	variable: { a: number; b: number };
+}
+interface GameState {
+	gameOver: boolean;
+	timeLeft: number;
+	QuestionTime: number;
+	score: number;
+	clue: number;
+	questions: Question[];
+	currentQuestionIndex: number;
+}
 
 const SumAndDiffirence: React.FC = () => {
-	const { grade } = useParams<{ grade: 'grade1' | 'grade2' | 'grade3' }>(); // Access the grade parameter from the URL
-
+	const { grade } = useParams<{ grade: 'grade1' | 'grade2' | 'grade3' }>();
 	const [GameState, setGameState] = useState({
 		gameOver: false,
 		timeLeft: 100,
 		QuestionTime: 100,
 		score: 0,
 		clue: 0,
-		questions: GrenereteQuetions(grade, '+', 5),
+		questions: GrenereteQuetions(grade, '+', grade == 'grade1' ? 38 : 10),
 		currentQuestionIndex: 0,
 	});
+	const updateGameState = (updater: (prev:  GameState) => GameState) => {
+		setGameState((prev) => updater(prev));
+	};
 
 	const scrollRef = useRef<HTMLDivElement | null>(null);
 
@@ -49,17 +68,16 @@ const SumAndDiffirence: React.FC = () => {
 	useEffect(() => {
 		const timer = setInterval(() => {
 			if (GameState.timeLeft > 0) {
-				setGameState((prev) => ({ ...prev, timeLeft: prev.timeLeft - 1 }));
+				updateGameState((prev) => ({ ...prev, timeLeft: prev.timeLeft - 1 }));
 			} else {
-				setGameState({ ...GameState, gameOver: true });
+				updateGameState((prev) => ({ ...prev, gameOver: true }));
 			}
 		}, 1000);
-		handleScrollIntoView();
 		return () => clearInterval(timer);
-	}, [GameState.questions, GameState, handleScrollIntoView]);
+	}, [GameState.questions, GameState]);
 
 	const restartGame = () => {
-		setGameState({
+		updateGameState(() => ({
 			gameOver: false,
 			timeLeft: 100,
 			QuestionTime: 100,
@@ -67,11 +85,12 @@ const SumAndDiffirence: React.FC = () => {
 			clue: 0,
 			questions: GrenereteQuetions(grade, '+', grade == 'grade1' ? 38 : 10),
 			currentQuestionIndex: 0,
-		});
+		}));
 	};
+
 	if (grade !== 'grade1') {
 		if (GameState.score == GameState.questions.length - 1) {
-			setGameState((prevGameState) => {
+			updateGameState((prevGameState) => {
 				return {
 					...prevGameState,
 					timeLeft: prevGameState.QuestionTime - 10,
@@ -88,7 +107,7 @@ const SumAndDiffirence: React.FC = () => {
 
 	const CorrectAnwser = () => {
 		playSound(correctSound);
-		setGameState((prevGameState) => {
+		updateGameState((prevGameState) => {
 			return {
 				...prevGameState,
 				timeLeft: prevGameState.QuestionTime,
@@ -102,9 +121,9 @@ const SumAndDiffirence: React.FC = () => {
 	};
 
 	const inCorrectAnwser = () => {
-		setGameState((prev) => {
+		updateGameState((prev: GameState) => {
 			const newClue = prev.clue + 1;
-			if (newClue >= (grade === 'grade1' ? 2 : grade === 'grade2' ? 2 : 4)) {
+			if (isGameOver(newClue, grade)) {
 				playSound(gameOverSound);
 				return { ...prev, gameOver: true };
 			}
@@ -113,29 +132,17 @@ const SumAndDiffirence: React.FC = () => {
 		});
 	};
 
+	const isGameOver = (
+		clueCount: number,
+		grade: 'grade1' | 'grade2' | 'grade3' | undefined
+	) => {
+		return clueCount >= (grade === 'grade1' ? 2 : grade === 'grade2' ? 2 : 4);
+	};
+
 	if (GameState.gameOver) {
 		return <Gameover restartGame={restartGame} GameState={GameState} />;
 	} else if (GameState.score == GameState.questions.length) {
-		return (
-			<main>
-				<section>
-					<article>
-						<h1>Congradulation you have complited all Questions</h1>
-						<h2 className="my-4">
-							wow, you have won {GameState.score / GameState.questions.length}
-						</h2>
-						<h3>{(GameState.score / GameState.questions.length) * 100}%</h3>
-						<button
-							className="w-full flex"
-							onClick={() => {
-								restartGame();
-							}}>
-							Restart
-						</button>
-					</article>
-				</section>
-			</main>
-		);
+		return <Won restartGame={restartGame} GameState={GameState} />;
 	}
 	return (
 		<main>
