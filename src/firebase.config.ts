@@ -1,11 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
-import {
-	getFirestore,
-	persistentLocalCache,
-	persistentMultipleTabManager,
-} from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 import { getPerformance } from 'firebase/performance';
 import { getAnalytics } from 'firebase/analytics';
@@ -37,11 +33,7 @@ const app = initializeApp(firebaseConfig);
 // 	isTokenAutoRefreshEnabled: true,
 // });
 export const auth = getAuth(app);
-export const database = getFirestore(app, {
-  localCache: persistentLocalCache({
-		tabManager: persistentMultipleTabManager(),
-	}),
-});
+export const database = getFirestore(app);
 export const storage = getStorage(app);
 export const perf = getPerformance(app);
 export const analytics = getAnalytics(app);

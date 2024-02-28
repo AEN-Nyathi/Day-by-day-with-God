@@ -1,11 +1,15 @@
 {
-  "name": "vite-project",
+  "name": "Day-by-day-with-God",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "start": "vite --open",
     "build": "tsc && vite build",
+    "deploy": "firebase deploy --only hosting",
+    "Install": "yarn",
+    "Upgrade": "yarn upgrade",
+    "Check": "yarn outdated",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

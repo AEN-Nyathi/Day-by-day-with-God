@@ -14,7 +14,7 @@ export default defineConfig({
 			'@functions':  '/src/functions',
 			'@Context':  '/src/Context',
 			'@Data':  '/src/Data',
-			'@Images':  '/src/Assets/images',
+			'@Images':  '/src/assets',
 			// Add more aliases here if needed
 		},
 	},

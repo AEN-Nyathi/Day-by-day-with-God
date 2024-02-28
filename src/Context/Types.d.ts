@@ -30,6 +30,7 @@ declare global {
 
 	type ActionTypes =
 		| { type: 'INITIALIZE'; data: AppState }
+		| { type: 'isLoading' | 'isMenuOpen' | 'isError'; data: AppState }
 		| { type: keyof AppState; data: AppState[keyof AppState] }
 
 }

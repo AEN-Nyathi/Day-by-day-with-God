@@ -1,3 +1,94 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	#root {
+		@apply bg-classroom bg-center bg-cover bg-no-repeat bg-fixed;
+	}
+
+	#root {
+		@apply w-screen p-0 m-0 h-screen overflow-hidden relative flex flex-col;
+	}
+}
+
+@layer base {
+	:root {
+		@apply text-gray-950 dark:text-gray-50 bg-gray-50 dark:bg-gray-950;
+	}
+
+	* {
+		@apply m-0 p-0 box-border items-center text-base md:text-lg;
+	}
+
+	root,
+	html,
+	body {
+		@apply w-screen p-0 m-0 font-sans scroll-smooth overflow-x-hidden h-screen;
+	}
+
+	body {
+		@apply bg-cover bg-center bg-fixed bg-light  dark:bg-dark text-dark dark:text-light selection:text-light selection:dark:text-dark   selection:bg-primary;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply inline-flex text-ellipsis;
+		@apply gap-2 capitalize ;
+	}
+
+	h1 {
+		@apply font-black text-center text-4xl md:text-6xl;
+	}
+
+	h2 {
+		@apply text-xl font-bold text-center bg-light/50 p-4 w-full  rounded-md dark:bg-dark/50 dark:text-blue-200 text-blue-900;
+	}
+
+	h3 {
+		@apply font-bold my-2 text-xl md:text-3xl dark:text-green-200 text-green-900;
+	}
+
+	h4 {
+		@apply font-extrabold text-lg md:text-xl dark:text-amber-200 text-amber-900;
+	}
+
+	p {
+		@apply text-emerald-900 text-base md:text-lg dark:text-emerald-200;
+	}
+
+	b {
+		@apply text-red-900 dark:text-red-200 font-black;
+	}
+
+	li {
+		@apply text-teal-900 dark:text-teal-200;
+	}
+
+	button {
+		@apply border-green-500 font-bold text-xl bg-blue-500/50 border-2 p-2 rounded-md flex justify-center duration-200;
+	}
+
+	a {
+		@apply text-blue-900 dark:text-blue-100 underline cursor-pointer;
+	}
+
+	section {
+		@apply p-2  md:p-4;
+	}
+	input {
+		@apply text-green-300 bg-slate-500;
+	}
+	article {
+		@apply border-blue-200 dark:border-blue-900 border-2 p-4 my-6 rounded-md bg-light/80 dark:bg-dark/80;
+	}
+
+	main {
+		@apply h-svh bg-fixed overflow-y-auto;
+		@apply grow overflow-y-auto overflow-x-hidden w-screen;
+	}
+}

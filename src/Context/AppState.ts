@@ -9,6 +9,14 @@ class AppState {
 		seconds: number;
 		nanoseconds: number;
 	};
+
+	isError: { state: boolean, message: string };
+	isLoading: {
+		progress: string,
+		state: boolean,
+		message: string,
+	};
+	isMenuOpen: boolean
 	constructor(
 
 	) {
@@ -29,6 +37,13 @@ class AppState {
 			seconds: 1,
 			nanoseconds: 2,
 		};
+		this.isMenuOpen = false;
+		this.isLoading = {
+			progress: 'Loading...',
+			state: false,
+			message: '',
+		};
+		this.isError = { state: false, message: '' };
 
 	}
 }

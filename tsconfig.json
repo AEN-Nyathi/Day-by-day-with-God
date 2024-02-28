@@ -30,7 +30,7 @@
 			"@functions/*": ["functions/*"],
 			"@Context/*": ["Context/*"],
 			"@Data/*": ["Data/*"],
-			"@Images/*": ["Assets/images/*"]
+			"@Images/*": ["assets/*"]
 			// Add more aliases as needed
 		}
   },

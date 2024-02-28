@@ -4,6 +4,17 @@ const reducer = (state: AppState = new AppState(), action: ActionTypes): AppStat
 	switch (action.type) {
 		case 'INITIALIZE':
 			return new AppState();
+		case 'isLoading':
+		case 'isMenuOpen':
+		case 'isError':
+			if (action.type in state) {
+				return {
+					...state,
+					[action.type]: action.data,
+				};
+			}
+			return state;
+	
 		default:
 			return state;
 	}
