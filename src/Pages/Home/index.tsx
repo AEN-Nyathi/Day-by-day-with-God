@@ -50,29 +50,27 @@ export default function Home() {
 						</li>
 					</ol>
 					<h3>Location:</h3>
-					<p>
-						<ul>
-							<li>Phalabowa Lulekani</li>
-							<li>1392</li>
-							<li>Nyenyakulu</li>
-						</ul>
-					</p>
+
+					<ul>
+						<li>Phalabowa Lulekani</li>
+						<li>1392</li>
+						<li>Nyenyakulu</li>
+					</ul>
+
 					<h3>Oparection time</h3>
-					<p>
-						<ul>
-							<li>Monday to friday</li>
-							<li>08:00 to 15:00</li>
-						</ul>
-					</p>
+
+					<ul>
+						<li>Monday to friday</li>
+						<li>08:00 to 15:00</li>
+					</ul>
+
 					<h3>Price Transparency:</h3>
-					<p>
-						Price for dayCare:
-						<ol className="list-disc pl-6">
-							<li>0 months - 3 months R00,00</li>
-							<li>3 months - 6 months R00,00</li>
-							<li>1 year - 5 years R00,00</li>
-						</ol>
-					</p>
+					<p>Price for dayCare:</p>
+					<ol className="list-disc pl-6">
+						<li>0 months - 3 months R00,00</li>
+						<li>3 months - 6 months R00,00</li>
+						<li>1 year - 5 years R00,00</li>
+					</ol>
 					<h3>Tutor</h3>
 					<ul className=" p-2  flex flex-wrap gap-4">
 						<li className="flex py-2  justify-start ">
@@ -82,7 +80,6 @@ export default function Home() {
 
 								<ol className=" flex flex-wrap gap-x-6">
 									<li>Mathematics</li>
-									
 								</ol>
 							</div>
 						</li>
@@ -131,73 +128,63 @@ export default function Home() {
 						</li>
 					</ol>
 					<h3>Location:</h3>
-					<p>
-						<ul>
-							<li>Phalabowa Lulekani</li>
-							<li>1392</li>
-							<li>Matiko-xikaya 234b ka zaki</li>
-						</ul>
-					</p>
+
+					<ul>
+						<li>Phalabowa Lulekani</li>
+						<li>1392</li>
+						<li>Matiko-xikaya 234b ka zaki</li>
+					</ul>
+
 					<h3>Oparection time</h3>
 					<ul className=" p-2  flex flex-wrap gap-4">
 						<li className="flex py-2  justify-start ">
 							<img src={Ntsako} className="h-16 w-16 rounded-full" />
 							<div className="ml-3  p-0">
 								<h4>Mr AEN Nyathi</h4>
-								<p>
-									{' '}
-									Monday - friday
-									<ol className="">
-										<li>Homework Help: 14:00 - 15:30</li>
-										<li>Subject Help: 15:30 - 17:00 </li>
-									</ol>
-								</p>
+								<p>Monday - friday</p>
+								<ol className="">
+									<li>Homework Help: 14:00 - 15:30</li>
+									<li>Subject Help: 15:30 - 17:00 </li>
+								</ol>
 							</div>
 						</li>
 						<li className="flex py-2  justify-start ">
 							<img src={Candy} className="h-16 w-16 rounded-full" />
 							<div className="ml-3  p-0">
 								<h4>Ms C Chabalala</h4>
-								<p>
-									{' '}
-									Monday - friday
-									<ol className="">
-										<li>Homework Help: 14:00 - 15:30</li>
-										<li>Subject Help: 15:30 - 17:00 </li>
-									</ol>
-								</p>
+								<p>Monday - friday</p>
+								<ol className="">
+									<li>Homework Help: 14:00 - 15:30</li>
+									<li>Subject Help: 15:30 - 17:00 </li>
+								</ol>
 							</div>
 						</li>
 					</ul>
 
 					<h3>Price Transparency:</h3>
-					<p>
-						Price for After Care:
-						<ol className="list-disc pl-6">
-							<li>Grade 4 - Grade 9 R250,00 for all subjects</li>
-							<li>
-								Grade 10 and Grade 11 per subject
-								<ol className="ml-6 flex flex-wrap gap-x-6">
-									<li>Maths R80,00 </li>
-									<li>Physics R80,00 </li>
-									<li>Life science R80</li>
-									<li>Agri science R80</li>
-									<li>Geograph R80</li>
-									<li>English R50</li>
-									<li>Xistonga R50</li>
-								</ol>
-							</li>
-							<li>
-								Grade 10 and Grade 11 Grouped subject
-								<ol className="list-disc pl-6">
-									<li>
-										Maths, Physics, Life science, Agri / Geograph R150,00{' '}
-									</li>
-									<li>English and Xistonga R80 </li>
-								</ol>
-							</li>
-						</ol>
-					</p>
+					<p>Price for After Care:</p>
+					<ol className="list-disc pl-6">
+						<li>Grade 4 - Grade 9 R250,00 for all subjects</li>
+						<li>
+							Grade 10 and Grade 11 per subject
+							<ol className="ml-6 flex flex-wrap gap-x-6">
+								<li>Maths R80,00 </li>
+								<li>Physics R80,00 </li>
+								<li>Life science R80</li>
+								<li>Agri science R80</li>
+								<li>Geograph R80</li>
+								<li>English R50</li>
+								<li>Xistonga R50</li>
+							</ol>
+						</li>
+						<li>
+							Grade 10 and Grade 11 Grouped subject
+							<ol className="list-disc pl-6">
+								<li>Maths, Physics, Life science, Agri / Geograph R150,00 </li>
+								<li>English and Xistonga R80 </li>
+							</ol>
+						</li>
+					</ol>
 
 					<h3>Tutor</h3>
 					<ul className=" p-2  flex flex-wrap gap-4">

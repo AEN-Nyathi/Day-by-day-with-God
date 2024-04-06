@@ -7,11 +7,12 @@ export default {
   ],
   theme: {
     extend: {
+     
       colors: {
         light: '#F0F8FF',
         dark: '#111111',
-    
-        primary: 'rgb(var(--color-primary) / var(--color-transparency))',
+        
+        primary: '#172554',
       },
       backgroundImage: {
         'logo': "url('/src/assets/logo.png')",

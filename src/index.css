@@ -38,7 +38,7 @@
 	h5,
 	h6 {
 		@apply inline-flex text-ellipsis;
-		@apply gap-2 capitalize ;
+		@apply gap-2 capitalize;
 	}
 
 	h1 {
@@ -68,11 +68,18 @@
 	li {
 		@apply text-teal-900 dark:text-teal-200;
 	}
-
-	button {
-		@apply border-green-500 font-bold text-xl bg-blue-500/50 border-2 p-2 rounded-md flex justify-center duration-200;
+	input {
+		@apply text-green-300 bg-slate-500;
 	}
 
+	button,
+	select {
+		@apply border-blue-500 font-bold p-1 md:p-2 text-base md:text-lg bg-blue-500/50 border-2  rounded-md flex justify-center duration-200;
+	}
+
+	select {
+		@apply bg-light dark:bg-dark text-sm md:text-sm;
+	}
 	a {
 		@apply text-blue-900 dark:text-blue-100 underline cursor-pointer;
 	}
@@ -80,15 +87,13 @@
 	section {
 		@apply p-2  md:p-4;
 	}
-	input {
-		@apply text-green-300 bg-slate-500;
-	}
+
 	article {
-		@apply border-blue-200 dark:border-blue-900 border-2 p-4 my-6 rounded-md bg-light/80 dark:bg-dark/80;
+		@apply border-blue-200 dark:border-blue-900 border-2 p-4 my-6 rounded-md bg-light/40 dark:bg-dark/80;
 	}
 
 	main {
-		@apply h-svh bg-fixed overflow-y-auto;
+		@apply h-svh  bg-fixed overflow-y-auto relative;
 		@apply grow overflow-y-auto overflow-x-hidden w-screen;
 	}
 }
