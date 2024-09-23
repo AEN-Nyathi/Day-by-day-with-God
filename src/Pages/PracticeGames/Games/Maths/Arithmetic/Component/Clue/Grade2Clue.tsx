@@ -9,7 +9,7 @@ interface NumberBoxProps {
 const Grade2Clue: React.FC<{ Question: ArithmeticQuestionType }> = ({ Question }) => {
 	const {
 		Operation,
-		Variable: { Operand1, Operand2 },
+		Question: { Operand1, Operand2 },
 	} = Question;
 
 	// Example usage

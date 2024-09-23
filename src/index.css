@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer components {
-	#root {
+	/* #root {
 		@apply bg-classroom bg-center bg-cover bg-no-repeat bg-fixed;
-	}
+	} */
 
 	#root {
 		@apply w-screen p-0 m-0 h-screen overflow-hidden relative flex flex-col;
@@ -38,11 +38,11 @@
 	h5,
 	h6 {
 		@apply inline-flex text-ellipsis;
-		@apply gap-2 capitalize;
+		@apply gap-2 capitalize font-black;
 	}
 
 	h1 {
-		@apply font-black text-center text-4xl md:text-6xl;
+		@apply  text-center text-4xl md:text-6xl;
 	}
 
 	h2 {

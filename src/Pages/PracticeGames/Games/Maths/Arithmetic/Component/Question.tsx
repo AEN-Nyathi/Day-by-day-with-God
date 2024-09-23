@@ -6,10 +6,10 @@ import { TiEquals } from 'react-icons/ti';
 import OperationsIcons from '../../components/Question/Elements/OperationsIcons';
 
 const CountMethod = lazy(() => import('./Clue/CountMethod'));
-const Grade4Clue = lazy(() => import('./Clue/Grade4Clue'));
+// const Grade4Clue = lazy(() => import('./Clue/Grade4Clue'));
 
 const Question: React.FC = () => {
-	const { StudentGrade, Clue, Operation, Questions, CurrentQuestion } = useGameStore();
+	const { StudentGrade, Clue, Questions, CurrentQuestion } = useGameStore();
 	const Question = Questions[CurrentQuestion] as ArithmeticQuestionType;
 
 	return (
@@ -51,7 +51,7 @@ const Question: React.FC = () => {
 					(Question.Operation == '+' || Question.Operation == '-') ? (
 						<CountMethod Question={Question} />
 					) : null}
-
+					{/* 
 					{Clue &&
 					(StudentGrade == 'Grade-3' || StudentGrade == 'Grade-4') &&
 					(Operation == '+' || Operation == '-') ? (
@@ -59,7 +59,7 @@ const Question: React.FC = () => {
 							Clue={Clue}
 							Question={Question}
 						/>
-					) : null}
+					) : null} */}
 				</Suspense>
 			</IconContext.Provider>
 		</article>

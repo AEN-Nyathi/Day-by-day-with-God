@@ -1,8 +1,8 @@
 
 
 
-export default function GenerateNumbers(NumberOfQuestions: NumberOfQuestionType): ArithmeticQuestionType[] {
-    const Questions: ArithmeticQuestionType[] = [];
+export default function GenerateNumbers(NumberOfQuestions: NumberOfQuestionType): FindTheNumberQuestionType[] {
+    const Questions: FindTheNumberQuestionType[] = [];
 
     if (NumberOfQuestions <= 0 || !Number.isInteger(NumberOfQuestions)) {
         throw new Error(
@@ -17,15 +17,16 @@ export default function GenerateNumbers(NumberOfQuestions: NumberOfQuestionType)
             number = Math.floor(Math.random() * 10) + 1; // Generate random number between 0 and 10
         } while (
             Questions.some(
-                (q) => q.Question === `${number}`
+                (q) => q.Question === number
             )
         ); // Ensure Questions are unique
 
         Questions.push({
+            type: "FindTheNumber",
+            Operation: '+',
             Answer: number,
-            Question: `${number}`,
-            Variable: { Operand1: number, Operand2: number },
-            AvailableAnswers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].sort(() => Math.random() - 0.5), // Filter out correct Answer from options
+            Question: number,
+            AvailableAnswers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].sort(() => Math.random() - 0.5),
         });
     }
 

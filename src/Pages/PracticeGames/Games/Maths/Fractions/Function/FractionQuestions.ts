@@ -17,6 +17,7 @@ export default function FractionQuestions(
         const { Answer, Integer, Positive, hasHCF, properFraction } = GenereteAnswer(fractionA, fractionB, Operation)
 
         const AddQuestion = () => Questions.add({
+            ID: `${Questions.size}`,
             type: 'Fractions',
             Operation: Operation,
             Question: { Operand1: { Denominator: fractionA.Denominator, Numerator: fractionA.Numerator }, Operation: Operation, Operand2: { Denominator: fractionB.Denominator, Numerator: fractionB.Numerator } },

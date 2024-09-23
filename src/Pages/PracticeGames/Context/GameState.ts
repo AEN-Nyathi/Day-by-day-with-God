@@ -11,7 +11,7 @@ class GamesState {
 	Operation: OperationType;
 	Score: number;
 	Clue: number;
-	Questions: ArithmeticQuestionType[] | MissingNumberQuestionType[] | FractionsQuestionType[] | ExponentsQuestionType[]
+	Questions: ArithmeticQuestionType[] | MissingNumberQuestionType[] | FractionsQuestionType[] | ExponentsQuestionType[] | FindTheNumberQuestionType[]
 	CurrentQuestion: number;
 	NumberOfQuestion: NumberOfQuestionType;
 	StudentGrade: StudentGradeType;
@@ -25,7 +25,7 @@ class GamesState {
 		this.Format = 'Format-B'
 		this.StudentGrade = 'Grade-1'
 		this.GameName = 'Arithmetic'
-		this.NumberOfQuestion = 5
+		this.NumberOfQuestion = 50
 		this.Questions = GrenereteQuetions(
 			this.StudentGrade,
 			this.Operation,

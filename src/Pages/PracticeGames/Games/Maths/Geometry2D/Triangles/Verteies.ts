@@ -26,7 +26,7 @@ export default function generateTriangleSides(): {
   AC: number;
   BC: number;
 } {
-  console.log('generateTriangleSides')
+  
   // Define the range for side AB
   const minAB: number = 250;
   const maxAB: number = window.innerWidth - 280;
@@ -43,31 +43,33 @@ export default function generateTriangleSides(): {
   let AB: number = RandomNumber((maxAB - minAB), minAB);
   let AC: number = RandomNumber((maxAC - minAC), minAC);
   let BC: number = RandomNumber((maxBC - minBC), minBC);
+  const sizeDiffirence = 100
 
   // isosceles
-  if (Math.abs(AC - BC) < 50) {
-    console.log('isosceles')
-    const EquilSides = Math.floor(Math.random() * (400 - 250)) + 250;
-    AC = EquilSides;
-    BC = EquilSides;
+  if (Math.abs(AC - AB) < sizeDiffirence) {
+    AC = AB
+  }
+  if (Math.abs(AC - BC) < sizeDiffirence) {
+    AC = BC
+  }
+  if (Math.abs(AB - BC) < sizeDiffirence) {
+    AB = BC
   }
   // equilateral triangle
-  if (Math.abs(AC - AB) < 50 && Math.abs(AC - BC) < 50) {
-    console.log('equilateral')
-    const EquilSides = Math.floor(Math.random() * (window.innerWidth - 280)) + 250;
-    AB = EquilSides
-    AC = EquilSides
-    BC = EquilSides
+  if (Math.abs(AC - AB) < sizeDiffirence && Math.abs(AC - BC) < sizeDiffirence && Math.abs(AB - BC) < sizeDiffirence) {
+    // const EquilSides = Math.floor(Math.random() * (window.innerWidth - 280)) + 250;
+    AC = AB
+    BC = AB
   }
-  // right-angled triangle
- 
-  if (Math.abs(BC - Math.sqrt(AB ** 2 + AC ** 2)) < 50 && AC < BC) {
-    console.log('right-angled BC')
+  // right-angled triangle 
+  if (Math.abs(BC - Math.sqrt(AB ** 2 + AC ** 2)) < sizeDiffirence) {
     BC = Math.sqrt(AB ** 2 + AC ** 2);
   }
-  if (Math.abs(AC - Math.sqrt(AB ** 2 + BC ** 2)) < 15 && AC > BC) {
-    console.log('right-angled AC')
+  if (Math.abs(AC - Math.sqrt(AB ** 2 + BC ** 2)) < sizeDiffirence) {
     AC = Math.sqrt(AB ** 2 + BC ** 2);
+  }
+  if (Math.abs(AB - Math.sqrt(AC ** 2 + BC ** 2)) < sizeDiffirence) {
+    AB = Math.sqrt(AC ** 2 + BC ** 2);
   }
 
   if (BC > Math.sqrt(AB ** 2 + AC ** 2) && AC < BC) {

@@ -17,6 +17,7 @@ export default function ExponentsQuestions(
         const Answer = GenereteAnswer(PowerA, PowerB, Operation)
         if (Answer < 1000 && Answer > -100 && Number.isInteger(Answer)) {
             Questions.add({
+                ID: `${Questions.size}`,
                 type: 'Exponents',
                 Operation,
                 Question: { Operand1: PowerA, Operation, Operand2: PowerB },

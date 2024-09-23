@@ -36,18 +36,33 @@ const CalculationQuestionsElement = () => {
 						/>
 					</h1>
 				) : (
-					<h1 className='flex  gap-2'>
-						<Operand
-							Operand={Question.Question.Operand1}
-							type={Question.type}
-						/>
+					<h1>
+						{typeof Questions[CurrentQuestion].Question !== 'number' ? (
+							<Operand
+								Operand={Questions[CurrentQuestion].Question.Operand1}
+								type={Questions[CurrentQuestion].type}
+							/>
+						) : (
+							<Operand
+								Operand={Questions[CurrentQuestion].Question}
+								type={Questions[CurrentQuestion].type}
+							/>
+						)}
+
 						<OperationsIcons />
-						<Operand
-							Operand={Question.Question.Operand2}
-							type={Question.type}
-						/>
+						{typeof Questions[CurrentQuestion].Question !== 'number' ? (
+							<Operand
+								Operand={Questions[CurrentQuestion].Question.Operand2}
+								type={Questions[CurrentQuestion].type}
+							/>
+						) : (
+							<Operand
+								Operand={Questions[CurrentQuestion].Question}
+								type={Questions[CurrentQuestion].type}
+							/>
+						)}
+
 						<TiEquals />
-						{Question.type == 'MissingNumber' ? Question.Question.IsEquelTo : null}
 					</h1>
 				)}
 			</IconContext.Provider>

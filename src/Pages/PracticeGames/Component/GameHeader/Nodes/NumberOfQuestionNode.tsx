@@ -4,6 +4,7 @@ export default function NumberOfQuestionNode() {
 	const { StudentGrade, Questions, Operation, dispatch } = useGameStore();
 	return (
 		<select
+			title='Number-Of-Question'
 			value={Questions.length}
 			className='w-full'
 			onChange={(event) =>

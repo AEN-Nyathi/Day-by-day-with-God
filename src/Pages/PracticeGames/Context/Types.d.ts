@@ -17,7 +17,7 @@ declare global {
 		link: string;
 	}
 
-	
+
 
 	interface SubjectType {
 		name: string;
@@ -33,14 +33,24 @@ declare global {
 	}
 
 	interface ArithmeticQuestionType {
+		ID: string[number]
 		type: 'Arithmetic'
 		Operation: OperationType;
 		Question: { Operand1: number; Operation: OperationType; Operand2: number, IsEquelTo?: number; };
 		Answer: number;
 		AvailableAnswers: number[];
 	}
+	interface FindTheNumberQuestionType {
+		ID: string[number]
+		type: 'FindTheNumber'
+		Operation: OperationType;
+		Question: number;
+		Answer: number;
+		AvailableAnswers: number[];
+	}
 	interface MissingNumberQuestionType {
 		type: 'MissingNumber'
+		ID: string[number]
 		format: FormatType
 		Operation: OperationType;
 		Question: { Operand1?: number; Operation: OperationType; Operand2?: number, IsEquelTo: number; };
@@ -48,12 +58,14 @@ declare global {
 		AvailableAnswers: number[];
 	}
 	interface PlaceValuesQuestionType {
+		ID: string[number]
 		type: 'PlaceValues'
 		Question: number;
 		Answer: number;
 		AvailableAnswers: number[];
 	}
 	interface FractionsQuestionType {
+		ID: string[number]
 		type: 'Fractions'
 		Operation: OperationType;
 		Question: { Operand1: FractionType; Operation: OperationType; Operand2: FractionType, };
@@ -61,6 +73,7 @@ declare global {
 		AvailableAnswers: FractionType[];
 	}
 	interface ExponentsQuestionType {
+		ID: string[number]
 		type: 'Exponents'
 		Operation: OperationType;
 		Question: { Operand1: PowerType; Operation: OperationType; Operand2: PowerType, };

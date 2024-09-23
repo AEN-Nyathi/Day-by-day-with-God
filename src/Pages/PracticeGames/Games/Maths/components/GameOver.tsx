@@ -21,15 +21,31 @@ const Gameover: React.FC = () => {
 						<article className='bg-blue-500/50'>
 							<h2 className='p-2 mb-2'>Answer: </h2>
 							<h1>
-								<Operand
-									Operand={Questions[CurrentQuestion].Question.Operand1}
-									type={Questions[CurrentQuestion].type}
-								/>
+								{typeof Questions[CurrentQuestion].Question !== 'number' ? (
+									<Operand
+										Operand={Questions[CurrentQuestion].Question.Operand1}
+										type={Questions[CurrentQuestion].type}
+									/>
+								) : (
+									<Operand
+										Operand={Questions[CurrentQuestion].Question}
+										type={Questions[CurrentQuestion].type}
+									/>
+								)}
+
 								<OperationsIcons />
-								<Operand
-									Operand={Questions[CurrentQuestion].Question.Operand2}
-									type={Questions[CurrentQuestion].type}
-								/>
+								{typeof Questions[CurrentQuestion].Question !== 'number' ? (
+									<Operand
+										Operand={Questions[CurrentQuestion].Question.Operand2}
+										type={Questions[CurrentQuestion].type}
+									/>
+								) : (
+									<Operand
+										Operand={Questions[CurrentQuestion].Question}
+										type={Questions[CurrentQuestion].type}
+									/>
+								)}
+
 								<TiEquals />
 								<Operand
 									Operand={Questions[CurrentQuestion].Answer}

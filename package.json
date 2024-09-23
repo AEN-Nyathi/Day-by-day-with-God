@@ -1,9 +1,10 @@
 {
-  "name": "Day-by-day-with-God",
+  "name": "DaByDayWithGod",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "TypeCheck": "tsc",
     "start": "vite --open",
     "build": "tsc && vite build",
     "deploy": "firebase deploy --only hosting",

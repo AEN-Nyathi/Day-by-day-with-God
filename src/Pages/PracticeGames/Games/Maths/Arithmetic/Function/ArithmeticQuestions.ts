@@ -14,10 +14,12 @@ export default function ArithmeticQuestions(
         const Operations: OperationType[] = ['+', '-', '*', '/']
         Operation = Operation == 'Mixed' ? Operations[RandomNumber(StudentGrade == 'Grade-2' ? 2 : StudentGrade == 'Grade-3' ? 3 : 4)] : Operation
 
-        const { x, y } = Operandes(StudentGrade, Operation, SpacailNumber)
+        let { x, y } = Operandes(StudentGrade, Operation, SpacailNumber)
+        if ((Operation == "-" || Operation == "/") && (x < y)) [x, y] = [y, x]
         const Answer = GenereteAnswer(x, y, Operation)
 
         const AddQuestion = () => Questions.add({
+            ID: `${Questions.size}`,
             type: 'Arithmetic',
             Answer,
             Question: { Operand1: x, Operation, Operand2: y },

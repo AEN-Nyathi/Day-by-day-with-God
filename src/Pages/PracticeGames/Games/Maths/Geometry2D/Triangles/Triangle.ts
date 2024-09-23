@@ -15,10 +15,10 @@ interface TriangleProperties {
   vertexB: { x: number; y: number };
   vertexC: { x: number; y: number };
   Area: number,
-  Type: "right-angled" | 'equilateral' | 'isosceles' | 'Other'
+  Type: "right-angled" | 'equilateral' | 'isosceles' | 'Acute' | 'Obtuse' | 'Scalene'
 }
 class TriangleClass implements TriangleProperties {
-  Type: "right-angled" | 'equilateral' | 'isosceles' | 'Other'
+  Type: "right-angled" | 'equilateral' | 'isosceles' | 'Acute' | 'Obtuse' | 'Scalene'
   vertexA: { x: number; y: number };
   vertexB: { x: number; y: number };
   vertexC: { x: number; y: number };
@@ -57,14 +57,21 @@ class TriangleClass implements TriangleProperties {
     return parseInt(Math.sqrt(dx * dx + dy * dy).toFixed(2));
   }
   private findTriangleType() {
-    if (this.AngleA == 90 || this.AngleB == 90 || this.AngleC == 90) {
+    const AngleA = Math.floor(this.AngleA)
+    const AngleB = Math.floor(this.AngleB)
+    const AngleC = Math.floor(this.AngleC)
+    if (AngleA == 90 || AngleB == 90 || AngleC == 90) {
       return "right-angled"
-    } else if (this.AngleA == 60 && this.AngleA == this.AngleB) {
+    } else if (AngleA == 60 && AngleB == 60 && AngleC == 60) {
       return 'equilateral'
-    } else if (this.AngleA !== 60 && this.AngleA == this.AngleB) {
+    } else if (AngleA == AngleB || AngleA == AngleC || AngleB == AngleC) {
       return 'isosceles'
+    } else if (AngleA < 90 && AngleB < 90 && AngleC < 90) {
+      return 'Acute'
+    } else if (AngleA > 90 || AngleB > 90 || AngleC > 90) {
+      return 'Obtuse'
     } else {
-      return 'Other'
+      return 'Scalene'
     }
 
   }
@@ -91,14 +98,6 @@ class TriangleClass implements TriangleProperties {
     }
     return this.AB
 
-    // // Step 1: Calculate the semi-perimeter (s)
-    // const s = (this.AB + this.AC + this.BC) / 2;
-
-    // // Step 2: Calculate the area using Heron's formula
-    // const area = Math.sqrt(s * (s - this.AB) * (s - this.AC) * (s - this.BC));
-    // const height = this.calculateTriangleHeight();
-    // const width = (2 * area) / height;
-    // return width;
   }
   // Calculate the perimeter of the triangle
   private calculatePerimeter(): number {
@@ -165,9 +164,10 @@ class TriangleClass implements TriangleProperties {
     // Label the size
     const AB = Number.isInteger(this.AB) ? this.AB : this.AB.toFixed(2)
     const AC = Number.isInteger(this.AC) ? this.AC : this.AC.toFixed(2)
+    const BC = Number.isInteger(this.BC) ? this.BC : this.BC.toFixed(2)
     Context.fillText(`${AB}cm`, (this.vertexA.x + this.vertexB.x - 30) / 2, (this.vertexA.y + this.vertexB.y) / 2 + 15);
     Context.fillText(`${AC}cm`, (this.vertexA.x + this.vertexC.x) / 2 - 60, (this.vertexA.y + this.vertexC.y) / 2);
-    Context.fillText(`${this.BC}cm`, (this.vertexB.x + this.vertexC.x) / 2 + 10, (this.vertexB.y + this.vertexC.y) / 2);
+    Context.fillText(`${BC}cm`, (this.vertexB.x + this.vertexC.x) / 2 + 10, (this.vertexB.y + this.vertexC.y) / 2);
     // Label the size
     // Context.font = '14px Arial ';
 

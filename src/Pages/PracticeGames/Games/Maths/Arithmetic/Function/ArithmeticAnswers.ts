@@ -1,4 +1,4 @@
-function ArithmeticAnswers(x: number, y: number, Operation: OperationType, ) {
+function ArithmeticAnswers(x: number, y: number, Operation: OperationType,) {
   let Answer: number
   switch (Operation) {
     case '+': {
@@ -11,11 +11,9 @@ function ArithmeticAnswers(x: number, y: number, Operation: OperationType, ) {
       Answer = x ** y
       break
     } case '/': {
-      if (x < y) [x, y] = [y, x];
       Answer = x / y
       break
     } case '-': {
-      if (x < y) [x, y] = [y, x];
       Answer = x - y
       break
     }
@@ -23,7 +21,7 @@ function ArithmeticAnswers(x: number, y: number, Operation: OperationType, ) {
       Answer = x + y
     }
   }
-  return  Answer
+  return Answer
 }
 
 export default ArithmeticAnswers

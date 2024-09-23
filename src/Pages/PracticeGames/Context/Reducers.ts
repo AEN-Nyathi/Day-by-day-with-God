@@ -3,7 +3,8 @@ import wrongAnswerSound from '@Images/Sound/wrongAnswer.mp3';
 import CorrectAnswerSound from '@Images/Sound/correctAnswer.mp3';
 import gameOver from '@Images/Sound/gameOver.mp3';
 import GrenereteQuestions from "./GrenereteQuestions";
-
+import { doc, setDoc } from "firebase/firestore";
+import { database } from "@Context/firebase.config";
 const reducer = (state: GamesState = new GamesState(), action: GamesActionTypes): GamesState => {
 	const playSound = (sound: HTMLAudioElement) => {
 		sound.currentTime = 0; // Reset sound to beginning before playing
@@ -42,7 +43,12 @@ const reducer = (state: GamesState = new GamesState(), action: GamesActionTypes)
 		case 'SortByAnswers': {
 			const Questions = !state.SortByAnswers ? GrenereteQuestions(state.GameName,
 				state.StudentGrade, state.Operation, state.NumberOfQuestion, state.SpacailNumber, state.Format
-			).sort((a, b) => a.Answer - b.Answer) : GrenereteQuestions(state.GameName,
+			).sort((a, b) => {
+				if (typeof a.Answer == 'number' && typeof b.Answer == 'number') {
+					return a.Answer - b.Answer
+				}
+				return Math.random() - 0.5
+			}) : GrenereteQuestions(state.GameName,
 				state.StudentGrade, state.Operation, state.NumberOfQuestion, state.SpacailNumber, state.Format
 			).sort(() => Math.random() - 0.5)
 			return {
@@ -83,7 +89,12 @@ const reducer = (state: GamesState = new GamesState(), action: GamesActionTypes)
 		case 'Spacail-Number': {
 			const Questions = GrenereteQuestions(state.GameName,
 				state.StudentGrade, state.Operation, 10, action.data, state.Format
-			).sort((a, b) => a.Answer - b.Answer)
+			).sort((a, b) => {
+				if (typeof a.Answer == 'number' && typeof b.Answer == 'number') {
+					return a.Answer - b.Answer
+				}
+				return Math.random() - 0.5
+			})
 			return {
 				...state, SortByAnswers: true, SpacailNumber: action.data, Clue: 0, GameOver: false,
 				Score: 0, CurrentQuestion: 0, TimeLeft: state.QuestionTime, NumberOfQuestion: 10,
@@ -112,6 +123,22 @@ const reducer = (state: GamesState = new GamesState(), action: GamesActionTypes)
 			const Questions = GrenereteQuestions(action.data.GameName,
 				action.data.StudentGrade, state.Operation, state.NumberOfQuestion, state.SpacailNumber, state.Format
 			)
+			// const questionsRef = doc(
+			// 	database,
+			// 	'Maths',
+			// 	state.GameName as string,
+			// 	state.StudentGrade as string,
+
+			// );
+			Questions.forEach((question) => {
+				setDoc(doc(
+					database,
+					'Maths',
+					state.GameName as string,
+					state.StudentGrade as string,
+					question.ID
+				), question)
+			});
 			return {
 				...state, Clue: 0, GameName: action.data.GameName, GameOver: false, Score: 0, CurrentQuestion: 0, TimeLeft: state.QuestionTime, StudentGrade: action.data.StudentGrade, Questions,
 			}

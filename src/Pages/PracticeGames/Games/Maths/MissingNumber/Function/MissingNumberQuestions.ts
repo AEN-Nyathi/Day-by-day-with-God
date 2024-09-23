@@ -19,6 +19,7 @@ export default function MissingNumberQuestions(StudentGrade: StudentGradeType, n
 
 		if (Answer >= 0 || StudentGrade == 'Grade-6') {
 			Questions.add({
+				ID: `${Questions.size}`,
 				type: "MissingNumber",
 				format: format,
 				Operation: operation,

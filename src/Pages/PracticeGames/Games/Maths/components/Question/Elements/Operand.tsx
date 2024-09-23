@@ -3,11 +3,9 @@ import FractionNode from '../../Number/FractionNode';
 import PowerNode from '../../Number/PowerNode';
 
 const Operand: React.FC<{
-	Operand:
-		| GamesStoreType['Questions'][number]['Question']['Operand1']
-		| GamesStoreType['Questions'][number]['Question']['Operand2'];
+	Operand: number | FractionType | PowerType | undefined;
+
 	type: GameNamesTypes;
-	
 }> = ({ Operand, type }) => {
 	switch (type) {
 		case 'Fractions':

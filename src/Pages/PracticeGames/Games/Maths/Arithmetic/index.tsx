@@ -25,7 +25,7 @@ const Arithmetic: React.FC = () => {
 	}, [StudentGrade, dispatch]);
 
 	if (GameOver) {
-		return <Gameover />;
+		return <Gameover />
 	} else if (Score == Questions.length) {
 		return <Won />;
 	}
@@ -35,8 +35,8 @@ const Arithmetic: React.FC = () => {
 				<CalculationQuestionsElement />
 				{Clue &&
 				(StudentGrade == 'Grade-1' || StudentGrade == 'Grade-2') &&
-				(Questions[CurrentQuestion].Question.Operation == '+' ||
-					Questions[CurrentQuestion].Question.Operation == '-') ? (
+				(Questions[CurrentQuestion].Operation == '+' ||
+					Questions[CurrentQuestion].Operation == '-') ? (
 					<CountMethod Question={Questions[CurrentQuestion] as ArithmeticQuestionType} />
 				) : null}
 			</article>

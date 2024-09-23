@@ -8,7 +8,7 @@ const Grade4Clue: React.FC<{
 	const {
 		Answer,
 		Operation,
-		Variable: { Operand1, Operand2 },
+		Question: { Operand1, Operand2 },
 	} = Question;
 
 	const [operand1Result, operand2Result] = [getPlaceValues(Operand1), getPlaceValues(Operand2)];
@@ -47,17 +47,13 @@ const Grade4Clue: React.FC<{
 				<div
 					key={placeValue + Math.random()}
 					className='flex bg-gray-500 p-2 rounded-lg'>
-					{operand1Result[placeValue] && operand2Result[placeValue] ? (
-						<span className='text-xs'>
-							{Operation == '+'
+					<span className='text-xs'>
+						{operand1Result[placeValue] !== undefined && operand2Result[placeValue] !== undefined
+							? Operation == '+'
 								? operand1Result[placeValue] + operand2Result[placeValue]
-								: operand1Result[placeValue] - operand2Result[placeValue]}
-						</span>
-					) : (
-						<span className='text-xs'>
-							{operand1Result[placeValue] || operand2Result[placeValue]}
-						</span>
-					)}
+								: operand1Result[placeValue] - operand2Result[placeValue]
+							: operand1Result[placeValue] || operand2Result[placeValue]}
+					</span>
 				</div>
 			);
 			addByPlaceValueGroups.push(<span className='text-xs'>+</span>);

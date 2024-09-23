@@ -21,9 +21,8 @@ export default function Geometry() {
 	return (
 		<main>
 			Geometry
-			<button onClick={() => setTriangle(new TriangleClass({ AB: 120, AC: 235, BC: 120 }))}>
-				Another Triangle
-			</button>
+			<button onClick={() => setTriangle(new TriangleClass())}>Another Triangle</button>
+			<h2>{Triangle.Type}</h2>
 			<article>
 				<canvas
 					className='bg-primary rounded-lg '
